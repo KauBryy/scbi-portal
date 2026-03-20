@@ -55,9 +55,9 @@ const App = () => {
 
   const team = [
     { name: 'Christophe', role: 'Gérant & Agent Immobilier', zone: 'France & Luxembourg', initial: 'C', photo: '/agents/christophe.jpg' },
-    { name: 'Emeline', role: 'Coordinatrice & Agente Responsable', zone: 'Ottange & ensemble du groupe', initial: 'E', photo: '/agents/emeline.jpg' },
-    { name: 'Anne-Catherine', role: 'Agente Immobilière Co-Responsable', zone: 'Avantis Immo Luxembourg', initial: 'A', photo: '/agents/anne-catherine.jpg' },
-    { name: 'Vanessa', role: 'Conseillère Immobilier', zone: 'Mercy-le-Bas & alentours', initial: 'V', photo: '/agents/vanessa.jpg' },
+    { name: 'Emeline', role: 'Coordinatrice & Agente Responsable', zone: 'Ottange & ensemble du groupe', initial: 'E', photo: '/agents/emeline.jpg', website: 'scbi.fr' },
+    { name: 'Anne-Catherine', role: 'Agente Immobilière Co-Responsable', zone: 'Avantis Immo Luxembourg', initial: 'A', photo: '/agents/anne-catherine.jpg', website: 'avantis-immo.lu' },
+    { name: 'Vanessa', role: 'Conseillère Immobilier', zone: 'Mercy-le-Bas & alentours', initial: 'V', photo: '/agents/vanessa.jpg', website: 'immo-vanessa.fr' },
     { name: 'Julia', role: 'Conseillère Immobilier', zone: 'Longwy & alentours', initial: 'J', photo: '/agents/julia.jpg' },
     { name: 'Mélanie', role: 'Conseillère Immobilier', zone: 'Axe Thionville – Metz', initial: 'M', photo: '/agents/melanie.jpg' },
   ];
@@ -498,52 +498,103 @@ const App = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════ ÉQUIPE */}
-      <section className="py-24 md:py-40 bg-[#f9f6f2] px-6 relative z-10 border-t border-black/5">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-24 md:py-40 bg-[#fcfaf8] px-6 relative z-10 border-t border-black/5 overflow-hidden">
+        
+        {/* Décoration de fond très subtile */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#B25804]/3 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#616163]/3 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16 md:mb-20"
+            className="text-center mb-16 md:mb-24"
           >
-            <p className="text-[10px] tracking-[0.5em] text-[#EA723D] uppercase mb-6">L'équipe</p>
+            <p className="text-[10px] tracking-[0.5em] text-[#B25804] uppercase mb-6">L'équipe</p>
             <h2 className="text-2xl md:text-3xl serif font-normal normal-case text-[#1a1a1f] leading-snug">
               6 experts à votre service
             </h2>
+            <div className="w-12 h-[1px] bg-[#616163]/20 mx-auto mt-8"></div>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            {team.map((member, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group p-6 md:p-8 border border-black/8 rounded-2xl bg-white hover:border-[#EA723D]/40 hover:shadow-md transition-all duration-500 text-left shadow-sm"
-              >
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#EA723D]/30 group-hover:border-[#EA723D] transition-all duration-500 mb-5 flex-shrink-0 shadow-md">
-                  {member.photo ? (
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }}
-                    />
-                  ) : null}
-                  <span
-                    className="w-full h-full bg-[#EA723D]/10 text-[#EA723D] text-sm font-bold items-center justify-center"
-                    style={{ display: 'none' }}
-                  >{member.initial}</span>
-                </div>
-                <h3 className="text-sm font-semibold tracking-[0.15em] uppercase text-[#1a1a1f] mb-2">{member.name}</h3>
-                <p className="text-[10px] tracking-[0.1em] text-[#EA723D] uppercase mb-3 leading-relaxed normal-case">{member.role}</p>
-                <p className="text-[10px] text-[#1a1a1f]/40 normal-case leading-relaxed">{member.zone}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+            {team.map((member, idx) => {
+              const isAgencyLink = member.name === 'Emeline' || member.name === 'Anne-Catherine';
+              
+              return (
+                <motion.div
+                  key={idx}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className={`group relative p-5 md:py-6 md:px-7 rounded-[1.5rem] md:rounded-[2rem] border border-[#B25804]/15 bg-white/70 backdrop-blur-2xl hover:bg-white/95 transition-all duration-500 text-center md:text-left shadow-sm hover:shadow-2xl hover:-translate-y-1 overflow-hidden ${isAgencyLink ? 'cursor-pointer' : ''}`}
+                >
+                  <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#B25804]/20 rounded-full blur-[60px] transition-all group-hover:scale-110 group-hover:bg-[#B25804]/35 duration-1000"></div>
+                  <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#616163]/20 rounded-full blur-[60px] transition-all group-hover:scale-110 group-hover:bg-[#616163]/35 duration-1000"></div>
+
+                  <div className="relative z-10">
+                    {/* Lien global pour Emeline & Anne-Catherine */}
+                    {isAgencyLink && (
+                      <a 
+                        href={`https://${member.website}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="absolute inset-0 z-20"
+                      />
+                    )}
+
+                    <div className="flex flex-col md:flex-row items-center md:items-center gap-4 md:gap-6">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg flex-shrink-0 group-hover:border-[#B25804]/60 transition-all duration-500">
+                        {member.photo ? (
+                          <img
+                            src={member.photo}
+                            alt={member.name}
+                            className="w-full h-full object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-700"
+                            onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }}
+                          />
+                        ) : null}
+                        <span
+                          className="w-full h-full bg-[#B25804]/10 text-[#B25804] text-lg font-bold items-center justify-center font-serif italic"
+                          style={{ display: 'none' }}
+                        >{member.initial}</span>
+                      </div>
+                      
+                      <div className="flex flex-col items-center md:items-start flex-1 min-w-0">
+                        <h3 className="text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase text-[#1a1a1f] mb-1.5">{member.name}</h3>
+                        <p className="text-[9px] md:text-[10px] tracking-[0.05em] text-[#B25804] font-black uppercase mb-3 leading-tight whitespace-normal">{member.role}</p>
+                        <div className="h-[2px] w-6 bg-[#616163]/20 mb-3"></div>
+                        <p className="text-[9px] text-[#1a1a1f]/60 font-medium normal-case leading-tight">{member.zone}</p>
+                        
+                        {/* Badges spéciaux pour Christophe */}
+                        {member.name === 'Christophe' && (
+                          <div className="mt-3 flex gap-2 flex-wrap justify-center md:justify-start">
+                            <a href="https://scbi.fr" target="_blank" rel="noopener noreferrer" className="px-2 py-1 rounded-full bg-[#B25804]/5 text-[7px] font-black tracking-widest text-[#B25804] border border-[#B25804]/10 hover:bg-[#B25804] hover:text-white transition-all duration-300 uppercase relative z-30">scbi.fr</a>
+                            <a href="https://avantis-immo.lu" target="_blank" rel="noopener noreferrer" className="px-2 py-1 rounded-full bg-[#B25804]/5 text-[7px] font-black tracking-widest text-[#B25804] border border-[#B25804]/10 hover:bg-[#B25804] hover:text-white transition-all duration-300 uppercase relative z-30">avantis-immo.lu</a>
+                          </div>
+                        )}
+
+                        {/* Badge pour Vanessa */}
+                        {member.name === 'Vanessa' && member.website && (
+                          <a 
+                            href={`https://${member.website}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="mt-3 px-2.5 py-1 rounded-full bg-[#B25804]/5 text-[7px] md:text-[8px] font-black tracking-widest text-[#B25804] border border-[#B25804]/10 hover:bg-[#B25804] hover:text-white transition-all duration-300 uppercase relative z-30"
+                          >
+                            {member.website}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
