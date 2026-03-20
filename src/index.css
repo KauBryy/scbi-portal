@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --charcoal: #2C353D;
+    --orange: #EA723D;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    background-color: var(--charcoal);
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, .serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Base Classes */
+.text-orange { color: var(--orange); }
+.bg-orange { background-color: var(--orange); }
+.border-orange { border-color: var(--orange); }
+
+/* Custom Designs based on Vercel project */
+.card-scbi {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-scbi:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--orange);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: var(--orange);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-color: #d15f2e;
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(234, 114, 61, 0.2);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.nav-scrolled {
+    background-color: rgba(10, 13, 16, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(234, 114, 61, 0.4);
+    box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.5);
+}
+
+.reveal-card:hover .reveal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scbi-gradient {
+    background: linear-gradient(135deg, #2C353D 0%, #1A2026 100%);
+}
+
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
