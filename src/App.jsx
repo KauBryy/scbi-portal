@@ -202,7 +202,7 @@ const App = () => {
                 <div className="relative z-10 flex flex-col items-center w-full">
                   <h3 className="text-base md:text-lg font-medium tracking-[0.2em] text-white mb-6 md:mb-10 leading-tight uppercase">Agence <br/> Luxembourg</h3>
                   <div className="text-[10px] md:text-[11px] font-black tracking-[0.4em] text-[#EA723D] opacity-60 group-hover:opacity-100 transition-all duration-300 border-t border-white/10 pt-4 md:pt-8 w-full uppercase">
-                     AVANTIS.LU <span className="ml-1 group-hover:translate-x-3 transition-transform inline-block">→</span>
+                     AVANTIS-IMMO.LU <span className="ml-1 group-hover:translate-x-3 transition-transform inline-block">→</span>
                   </div>
                 </div>
             </motion.a>
@@ -361,8 +361,8 @@ const App = () => {
                 transition={{ duration: 1.0, delay: idx * 0.8 }}
                 className="p-10 text-left bg-white/[0.04] backdrop-blur-3xl rounded-r-3xl border-l-2 border-[#EA723D] border-y border-r border-white/10 group hover:bg-[#EA723D]/10 transition-all duration-500 shadow-2xl"
               >
-                <h4 className="text-[11px] font-black tracking-[0.5em] mb-6 text-white/50 group-hover:text-[#EA723D] transition-colors uppercase">{item.title}</h4>
-                <p className="normal-case text-white/60 leading-relaxed font-light text-sm md:text-base group-hover:text-white/80 transition-colors">{item.desc}</p>
+                <h4 className="text-[11px] font-black tracking-[0.5em] mb-6 text-white/80 group-hover:text-[#EA723D] transition-colors uppercase">{item.title}</h4>
+                <p className="normal-case text-white/90 leading-relaxed font-light text-sm md:text-base group-hover:text-white transition-colors">{item.desc}</p>
               </motion.div>
             ))}
           </div>
