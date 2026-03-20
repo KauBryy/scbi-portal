@@ -103,7 +103,7 @@ const App = () => {
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-[#0A0D10]/40 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-[#0A0D10]/20 backdrop-blur-[0.5px]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90"></div>
         
         {/* Overlay initial sombre → fondu */}
